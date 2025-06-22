@@ -1,0 +1,9 @@
+<h1>Hola mundo</h1>
+<button (click)="increment()">+</button>
+<p>Contador: {{ count }}</p>
+<button (click)="decrement()">-</button>
+<div>
+    @for(product of products; track product) {
+        <app-product [name]="product.name" [price]="product.price"></app-product>
+    }
+</div>

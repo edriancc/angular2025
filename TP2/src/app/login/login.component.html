@@ -1,0 +1,35 @@
+<h2>Iniciar Sesión</h2>
+
+<form (submit)="login()">
+    <div>
+        <label for="email-login">Email:</label>
+        <input
+            id="email-login"
+            type="email"
+            required
+            name="email"
+            [(ngModel)]="form_state.email"
+            #email="ngModel"
+        >
+        @if(email.invalid && (email.touched || email.dirty)) {
+            <span class="error-text">El email es obligatorio y debe ser válido.</span>
+        }
+    </div>
+    
+    <div>
+        <label for="password-login">Contraseña:</label>
+        <input
+            id="password-login"
+            type="password"
+            required
+            name="password"
+            [(ngModel)]="form_state.password"
+            #password="ngModel"
+        >
+        @if(password.invalid && (password.touched || password.dirty)) {
+            <span class="error-text">La contraseña es obligatoria.</span>
+        }
+    </div>
+    
+    <button type="submit">Iniciar Sesión</button>
+</form>

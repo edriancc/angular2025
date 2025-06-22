@@ -1,0 +1,43 @@
+<h1>Messages</h1>
+<div>
+    @if(messages.length === 0) {
+        <span class="error-text">No messages available.</span>
+    }
+    @else {
+        @for(message of messages; track message.id) {
+            <div class="message">
+                <strong>{{ message.author }}:</strong> {{ message.text }}
+            </div>
+        }
+    }
+</div>
+<form (submit)="sendMessage()">
+    <div>
+      <label for="author">Author:</label>
+        <input
+            id="author"
+            type="text"
+            required
+            minlength="3"
+            maxlength="20"
+            name="autor"
+            [(ngModel)]="form_state.author"
+            #author="ngModel"
+        >  
+        @if(author.invalid && (author.touched || author.dirty)) {
+            <span class="error-text">Author must be between 3 and 20 characters.</span>
+        }
+    </div>
+    <div>
+      <label for="text">Message:</label>
+        <textarea
+            id="text"
+            required
+            minlength="1"
+            maxlength="120"
+            name="text"
+            [(ngModel)]="form_state.text"
+        ></textarea>
+    </div>
+    <button type="submit">Send</button>
+</form>
