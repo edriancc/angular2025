@@ -1,78 +1,80 @@
 <app-navbar></app-navbar>
-<h2>Registro de Usuario</h2>
+<div class="registro-container">
+    <h2>Registro de Usuario</h2>
 
-<form (submit)="registrar()">
-    <div>
-        <label for="nombre">Nombre:</label>
-        <input
-            id="nombre"
-            type="text"
-            required
-            name="nombre"
-            [(ngModel)]="form_state.nombre"
-            #nombre="ngModel"
-        >
-        @if(nombre.invalid && (nombre.touched || nombre.dirty)) {
-            <span class="error-text">El nombre es obligatorio.</span>
-        }
-    </div>
-    
-    <div>
-        <label for="apellido">Apellido:</label>
-        <input
-            id="apellido"
-            type="text"
-            required
-            name="apellido"
-            [(ngModel)]="form_state.apellido"
-            #apellido="ngModel"
-        >
-        @if(apellido.invalid && (apellido.touched || apellido.dirty)) {
-            <span class="error-text">El apellido es obligatorio.</span>
-        }
-    </div>
-    
-    <div>
-        <label for="telefono">Teléfono:</label>
-        <input
-            id="telefono"
-            type="tel"
-            name="telefono"
-            [(ngModel)]="form_state.telefono"
-        >
-    </div>
-    
-    <div>
-        <label for="email-registro">Email:</label>
-        <input
-            id="email-registro"
-            type="email"
-            required
-            name="email"
-            [(ngModel)]="form_state.email"
-            #email="ngModel"
-        >
-        @if(email.invalid && (email.touched || email.dirty)) {
-            <span class="error-text">El email es obligatorio y debe ser válido.</span>
-        }
-    </div>
-    
-    <div>
-        <label for="password-registro">Contraseña:</label>
-        <input
-            id="password-registro"
-            type="password"
-            required
-            minlength="6"
-            maxlength="10"
-            name="password"
-            [(ngModel)]="form_state.password"
-            #password="ngModel"
-        >
-        @if(password.invalid && (password.touched || password.dirty)) {
-            <span class="error-text">La contraseña debe tener entre 6 y 10 caracteres.</span>
-        }
-    </div>
-    
-    <button type="submit">Registrarse</button>
-</form>
+    <form (submit)="registrar()">
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input
+                id="nombre"
+                type="text"
+                required
+                name="nombre"
+                [(ngModel)]="form_state.nombre"
+                #nombre="ngModel"
+            >
+            @if(nombre.invalid && (nombre.touched || nombre.dirty)) {
+                <span class="error-text">El nombre es obligatorio.</span>
+            }
+        </div>
+        
+        <div>
+            <label for="apellido">Apellido:</label>
+            <input
+                id="apellido"
+                type="text"
+                required
+                name="apellido"
+                [(ngModel)]="form_state.apellido"
+                #apellido="ngModel"
+            >
+            @if(apellido.invalid && (apellido.touched || apellido.dirty)) {
+                <span class="error-text">El apellido es obligatorio.</span>
+            }
+        </div>
+        
+        <div>
+            <label for="telefono">Teléfono:</label>
+            <input
+                id="telefono"
+                type="tel"
+                name="telefono"
+                [(ngModel)]="form_state.telefono"
+            >
+        </div>
+        
+        <div>
+            <label for="email-registro">Email:</label>
+            <input
+                id="email-registro"
+                type="email"
+                required
+                name="email"
+                [(ngModel)]="form_state.email"
+                #email="ngModel"
+            >
+            @if(email.invalid && (email.touched || email.dirty)) {
+                <span class="error-text">El email es obligatorio y debe ser válido.</span>
+            }
+        </div>
+        
+        <div>
+            <label for="password-registro">Contraseña:</label>
+            <input
+                id="password-registro"
+                type="password"
+                required
+                minlength="6"
+                maxlength="10"
+                name="password"
+                [(ngModel)]="form_state.password"
+                #password="ngModel"
+            >
+            @if(password.invalid && (password.touched || password.dirty)) {
+                <span class="error-text">La contraseña debe tener entre 6 y 10 caracteres.</span>
+            }
+        </div>
+        
+        <button type="submit">Registrarse</button>
+    </form>
+</div>
