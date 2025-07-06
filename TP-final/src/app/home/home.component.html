@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+
+<div class="home-container">
+  <h1>Nuestra Tienda</h1>
+  
+  @if (cargando) {
+    <div class="loading">
+      <p>Cargando productos...</p>
+    </div>
+  } @else if (error) {
+    <div class="error">
+      <p>Error al cargar los productos. Inténtalo de nuevo más tarde.</p>
+    </div>
+  } @else {
+    <div class="productos-grid">
+      @for (producto of productos; track producto.id) {
+        <div class="producto-card" [routerLink]="['/detalle', producto.id]">
+          <img [src]="producto.image" [alt]="producto.title" class="producto-imagen">
+          <div class="producto-info">
+            <h3 class="producto-titulo">{{ producto.title }}</h3>
+            <p class="producto-precio">${{ producto.price }}</p>
+            <p class="producto-categoria">{{ producto.category }}</p>
+            <div class="producto-rating">
+              <span class="stars">⭐</span>
+              <span>{{ producto.rating.rate }} ({{ producto.rating.count }})</span>
+            </div>
+            <p class="producto-descripcion">{{ producto.description | slice:0:100 }}...</p>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>

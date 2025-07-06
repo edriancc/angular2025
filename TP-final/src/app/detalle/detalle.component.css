@@ -1,0 +1,159 @@
+.detalle-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+}
+
+.error {
+  color: #d32f2f;
+}
+
+.producto-detalle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 20px 0;
+}
+
+.producto-imagen-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.producto-imagen-detalle {
+  max-width: 100%;
+  height: 400px;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.producto-info-detalle {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.producto-titulo-detalle {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.producto-precio-detalle {
+  margin: 10px 0;
+}
+
+.precio {
+  font-size: 32px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.producto-categoria-detalle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.categoria-label {
+  font-weight: bold;
+  color: #666;
+}
+
+.categoria {
+  background-color: #f0f0f0;
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-transform: capitalize;
+  font-size: 14px;
+}
+
+.producto-rating-detalle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stars {
+  color: #ffc107;
+  font-size: 20px;
+}
+
+.rating-text {
+  color: #666;
+  font-size: 16px;
+}
+
+.producto-descripcion-detalle h3 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.producto-descripcion-detalle p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.producto-acciones {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.btn-comprar, .btn-volver {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-comprar {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-comprar:hover {
+  background-color: #218838;
+}
+
+.btn-volver {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-volver:hover {
+  background-color: #5a6268;
+}
+
+@media (max-width: 768px) {
+  .producto-detalle {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .producto-imagen-detalle {
+    height: 300px;
+  }
+  
+  .producto-titulo-detalle {
+    font-size: 24px;
+  }
+  
+  .precio {
+    font-size: 28px;
+  }
+}

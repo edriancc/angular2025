@@ -1,0 +1,154 @@
+<app-navbar></app-navbar>
+
+<div class="contacto-container">
+  <h1>Contáctanos</h1>
+  
+  @if (enviado) {
+    <div class="mensaje-exito">
+      <div class="exito-icon">✅</div>
+      <h2>¡Mensaje Enviado!</h2>
+      <p>Gracias por contactarnos. Te responderemos pronto.</p>
+      <button (click)="resetearFormulario()" class="btn-nuevo-mensaje">
+        Enviar Otro Mensaje
+      </button>
+    </div>
+  } @else {
+    <div class="formulario-container">
+      <p class="descripcion">
+        ¿Tienes alguna pregunta o necesitas ayuda? Completa el formulario y nos pondremos en contacto contigo.
+      </p>
+      
+      <form [formGroup]="contactoForm" (ngSubmit)="onSubmit()" class="contacto-form">
+        <div class="form-group">
+          <label for="nombre">Nombre completo *</label>
+          <input
+            id="nombre"
+            type="text"
+            formControlName="nombre"
+            placeholder="Ingresa tu nombre completo"
+            [class.error]="nombre?.invalid && nombre?.touched"
+          >
+          @if (nombre?.invalid && nombre?.touched) {
+            <div class="error-mensaje">
+              @if (nombre?.errors?.['required']) {
+                <span>El nombre es obligatorio</span>
+              } @else if (nombre?.errors?.['minlength']) {
+                <span>El nombre debe tener al menos 2 caracteres</span>
+              } @else if (nombre?.errors?.['maxlength']) {
+                <span>El nombre no puede exceder 50 caracteres</span>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            placeholder="tu@email.com"
+            [class.error]="email?.invalid && email?.touched"
+          >
+          @if (email?.invalid && email?.touched) {
+            <div class="error-mensaje">
+              @if (email?.errors?.['required']) {
+                <span>El email es obligatorio</span>
+              } @else if (email?.errors?.['email']) {
+                <span>Ingresa un email válido</span>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="telefono">Teléfono *</label>
+          <input
+            id="telefono"
+            type="tel"
+            formControlName="telefono"
+            placeholder="+54 11 1234-5678"
+            [class.error]="telefono?.invalid && telefono?.touched"
+          >
+          @if (telefono?.invalid && telefono?.touched) {
+            <div class="error-mensaje">
+              @if (telefono?.errors?.['required']) {
+                <span>El teléfono es obligatorio</span>
+              } @else if (telefono?.errors?.['pattern']) {
+                <span>Ingresa un teléfono válido</span>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="asunto">Asunto *</label>
+          <input
+            id="asunto"
+            type="text"
+            formControlName="asunto"
+            placeholder="¿En qué podemos ayudarte?"
+            [class.error]="asunto?.invalid && asunto?.touched"
+          >
+          @if (asunto?.invalid && asunto?.touched) {
+            <div class="error-mensaje">
+              @if (asunto?.errors?.['required']) {
+                <span>El asunto es obligatorio</span>
+              } @else if (asunto?.errors?.['minlength']) {
+                <span>El asunto debe tener al menos 5 caracteres</span>
+              } @else if (asunto?.errors?.['maxlength']) {
+                <span>El asunto no puede exceder 100 caracteres</span>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="mensaje">Mensaje *</label>
+          <textarea
+            id="mensaje"
+            formControlName="mensaje"
+            placeholder="Describe tu consulta o problema..."
+            rows="5"
+            [class.error]="mensaje?.invalid && mensaje?.touched"
+          ></textarea>
+          @if (mensaje?.invalid && mensaje?.touched) {
+            <div class="error-mensaje">
+              @if (mensaje?.errors?.['required']) {
+                <span>El mensaje es obligatorio</span>
+              } @else if (mensaje?.errors?.['minlength']) {
+                <span>El mensaje debe tener al menos 10 caracteres</span>
+              } @else if (mensaje?.errors?.['maxlength']) {
+                <span>El mensaje no puede exceder 500 caracteres</span>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="form-actions">
+          <button 
+            type="submit" 
+            class="btn-enviar"
+            [disabled]="enviando || contactoForm.invalid"
+          >
+            @if (enviando) {
+              <span class="spinner">⏳</span>
+              Enviando...
+            } @else {
+              Enviar Mensaje
+            }
+          </button>
+          
+          <button 
+            type="button" 
+            class="btn-limpiar"
+            (click)="resetearFormulario()"
+            [disabled]="enviando"
+          >
+            Limpiar
+          </button>
+        </div>
+      </form>
+    </div>
+  }
+</div>

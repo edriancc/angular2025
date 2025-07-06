@@ -1,0 +1,48 @@
+<app-navbar></app-navbar>
+
+<div class="detalle-container">
+  @if (cargando) {
+    <div class="loading">
+      <p>Cargando producto...</p>
+    </div>
+  } @else if (error) {
+    <div class="error">
+      <p>Error al cargar el producto. Inténtalo de nuevo más tarde.</p>
+      <button (click)="volverATienda()" class="btn-volver">Volver a la Tienda</button>
+    </div>
+  } @else if (producto) {
+    <div class="producto-detalle">
+      <div class="producto-imagen-container">
+        <img [src]="producto.image" [alt]="producto.title" class="producto-imagen-detalle">
+      </div>
+      
+      <div class="producto-info-detalle">
+        <h1 class="producto-titulo-detalle">{{ producto.title }}</h1>
+        
+        <div class="producto-precio-detalle">
+          <span class="precio">${{ producto.price }}</span>
+        </div>
+        
+        <div class="producto-categoria-detalle">
+          <span class="categoria-label">Categoría:</span>
+          <span class="categoria">{{ producto.category }}</span>
+        </div>
+        
+        <div class="producto-rating-detalle">
+          <span class="stars">⭐⭐⭐⭐⭐</span>
+          <span class="rating-text">{{ producto.rating.rate }} de 5 ({{ producto.rating.count }} reseñas)</span>
+        </div>
+        
+        <div class="producto-descripcion-detalle">
+          <h3>Descripción</h3>
+          <p>{{ producto.description }}</p>
+        </div>
+        
+        <div class="producto-acciones">
+          <button class="btn-comprar">Comprar Ahora</button>
+          <button class="btn-volver" (click)="volverATienda()">Volver a la Tienda</button>
+        </div>
+      </div>
+    </div>
+  }
+</div>
